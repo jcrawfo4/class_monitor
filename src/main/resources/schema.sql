@@ -13,7 +13,8 @@ create table if not exists school (
 create table if not exists student (
     student_id int primary key AUTO_INCREMENT,
     school_id int not null,
-    student_name varchar(60) not null,
+    student_first_name varchar(60) not null,
+    student_last_name varchar(60) not null,
     student_grade int,
     merits int,
     demerits int,

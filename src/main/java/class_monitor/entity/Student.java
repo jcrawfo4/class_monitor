@@ -12,7 +12,6 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
-    private Integer schoolId;
     private String studentFirstName;
     private String studentLastName;
     private Integer studentGrade;
