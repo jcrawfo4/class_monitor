@@ -16,14 +16,22 @@ public class StudentDto {
     private Integer merits;
     private Integer demerits;
 
+    public StudentDto(Student student){
+        this.studentId = student.getStudentId();
+        this.studentFirstName = student.getStudentFirstName();
+        this.studentLastName = student.getStudentLastName();
+        this.merits = student.getMerits();
+        this.demerits = student.getDemerits();
+    }
+
 
     public Student toStudent() {
         Student student = new Student();
-        student.setStudentId(studentId);
-        student.setStudentFirstName(studentFirstName);
-        student.setStudentLastName(studentLastName);
-        student.setMerits(merits);
-        student.setDemerits(demerits);
+        student.setStudentId(this.studentId);
+        student.setStudentFirstName(this.studentFirstName);
+        student.setStudentLastName(this.studentLastName);
+        student.setMerits(this.merits);
+        student.setDemerits(this.demerits);
         return student;
     }
 }

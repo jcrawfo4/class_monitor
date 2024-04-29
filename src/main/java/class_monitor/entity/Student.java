@@ -2,6 +2,8 @@ package class_monitor.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +20,9 @@ public class Student {
     private Integer merits;
     private Integer demerits;
 
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "students")
     private Set<Teacher> teachers = new HashSet<>();
 }
