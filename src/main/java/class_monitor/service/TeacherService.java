@@ -1,6 +1,7 @@
 package class_monitor.service;
 
-import class_monitor.controller.dtos.TeacherDto;
+import class_monitor.dtos.StudentDto;
+import class_monitor.dtos.TeacherDto;
 import class_monitor.dao.SchoolDao;
 import class_monitor.dao.StudentDao;
 import class_monitor.dao.TeacherDao;
@@ -103,5 +104,17 @@ public class TeacherService {
     public void deleteTeacher(Integer teacherId) {
         Teacher teacher = findTeacherById(teacherId);
         teacherDao.delete(teacher);
+    }
+
+    @Transactional(readOnly = true)
+    public List<StudentDto> getStudentsByTeacherId(Integer teacherId) {
+        Teacher teacher = findTeacherById(teacherId);
+        Set<Student> students = teacher.getStudents();
+        List<StudentDto> studentDtos = new LinkedList<>();
+        for (Student student : students) {
+            StudentDto studentDto = new StudentDto(student);
+            studentDtos.add(studentDto);
+        }
+        return studentDtos;
     }
 }

@@ -1,4 +1,4 @@
-package class_monitor.controller.dtos;
+package class_monitor.dtos;
 
 import class_monitor.entity.School;
 import class_monitor.entity.Student;

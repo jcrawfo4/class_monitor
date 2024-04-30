@@ -1,8 +1,9 @@
-package class_monitor.controller.dtos;
+package class_monitor.dtos;
 
 
 import class_monitor.entity.Student;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,8 @@ public class StudentDto {
     private String studentLastName;
     private Integer merits;
     private Integer demerits;
+    private Integer schoolId;
+    private Integer studentGrade;
 
     public StudentDto(Student student){
         this.studentId = student.getStudentId();
@@ -22,6 +25,8 @@ public class StudentDto {
         this.studentLastName = student.getStudentLastName();
         this.merits = student.getMerits();
         this.demerits = student.getDemerits();
+        this.schoolId = student.getStudentId();
+        this.studentGrade = student.getStudentGrade();
     }
 
 
@@ -32,6 +37,8 @@ public class StudentDto {
         student.setStudentLastName(this.studentLastName);
         student.setMerits(this.merits);
         student.setDemerits(this.demerits);
+        student.setSchoolId(this.schoolId);
+        student.setStudentGrade(this.studentGrade);
         return student;
     }
 }

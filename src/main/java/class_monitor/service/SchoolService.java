@@ -1,6 +1,6 @@
 package class_monitor.service;
 
-import class_monitor.controller.dtos.SchoolDto;
+import class_monitor.dtos.SchoolDto;
 import class_monitor.dao.SchoolDao;
 import class_monitor.dao.StudentDao;
 import class_monitor.entity.School;
@@ -15,9 +15,6 @@ public class SchoolService {
 
     @Autowired
     SchoolDao schoolDao;
-
-    @Autowired
-    StudentDao studentDao;
 
     @Transactional(readOnly = false)
     public SchoolDto saveSchool(SchoolDto schoolDto) {
@@ -35,5 +32,10 @@ public class SchoolService {
     private School findSchoolById(Integer schoolId) {
         return schoolDao.findById(schoolId)
                 .orElseThrow(() -> new NoSuchElementException("School with ID=" + schoolId + " not found!"));
+    }
+
+    public void deleteSchool(Integer schoolId) {
+        School school = findSchoolById(schoolId);
+        schoolDao.delete(school);
     }
 }

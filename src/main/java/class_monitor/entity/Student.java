@@ -19,6 +19,7 @@ public class Student {
     private Integer studentGrade;
     private Integer merits;
     private Integer demerits;
+    private Integer schoolId;
 
 
     @ToString.Exclude

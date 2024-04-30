@@ -1,6 +1,6 @@
 package class_monitor.service;
 
-import class_monitor.controller.dtos.StudentDto;
+import class_monitor.dtos.StudentDto;
 import class_monitor.dao.SchoolDao;
 import class_monitor.dao.StudentDao;
 import class_monitor.dao.TeacherDao;
@@ -10,8 +10,11 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -27,11 +30,19 @@ public class StudentService {
     @Transactional(readOnly = false)
     public StudentDto saveStudent(StudentDto studentDto){
         Student student = studentDto.toStudent();
+        setFieldsInStudent(student, studentDto);
         Student databaseStudent = studentDao.save(student);
+
         return new StudentDto(databaseStudent);
     }
 
     private void setFieldsInStudent(Student student, StudentDto studentDto) {
+        student.setStudentFirstName(studentDto.getStudentFirstName());
+        student.setStudentLastName(studentDto.getStudentLastName());
+        student.setMerits(studentDto.getMerits());
+        student.setDemerits(studentDto.getDemerits());
+        student.setSchoolId(studentDto.getSchoolId());
+        student.setStudentGrade(studentDto.getStudentGrade());
     }
 
     private Student findOrCreateStudent(Integer studentId, String studentFirstName, String studentLastName) {
@@ -59,4 +70,18 @@ public class StudentService {
         Student student = findStudentById(studentId);
         return new StudentDto(student);
     }
+
+    public Map<String, String> deleteStudent(Integer studentId) {
+        studentDao.deleteById(studentId);
+        return Map.of("message", "Student with id = " + studentId + " deleted successfully");
+    }
+
+//    public List<StudentDto> getStudentsByTeacherId(Integer teacherId) {
+//        List<Student> students = studentDao.findByTeacherId(teacherId);
+//        return students.stream()
+//                .map(StudentDto::new)
+//                .collect(Collectors.toList());
+//    }
+
+
 }

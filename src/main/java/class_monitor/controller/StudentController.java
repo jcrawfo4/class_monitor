@@ -1,5 +1,6 @@
-package class_monitor.controller.dtos;
+package class_monitor.controller;
 
+import class_monitor.dtos.StudentDto;
 import class_monitor.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,20 @@ public class StudentController {
         log.info("Getting student by id: {}", studentId);
         return studentService.getStudentById(studentId);
     }
+
+@DeleteMapping("student/{studentId}")
+    public void deleteStudent(@PathVariable Integer studentId){
+        log.info("Deleting student by id: {}", studentId);
+        studentService.deleteStudent(studentId);
+    }
+
+    @PutMapping("student/{studentId}")
+    public StudentDto updateStudent(@PathVariable Integer studentId, @RequestBody StudentDto studentDto){
+        studentDto.setStudentId(studentId);
+        log.info("Updating student by id: {}", studentDto);
+        return studentService.saveStudent(studentDto);
+    }
+
+
 
 }

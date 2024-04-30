@@ -1,5 +1,8 @@
-package class_monitor.controller.dtos;
+package class_monitor.controller;
 
+import class_monitor.dtos.StudentDto;
+import class_monitor.dtos.TeacherDto;
+import class_monitor.service.StudentService;
 import class_monitor.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,9 @@ public class TeacherController {
 
     @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    private StudentService studentService;
 
     @PostMapping("/teacher")
     @ResponseStatus(code = HttpStatus.CREATED)
@@ -49,4 +55,11 @@ public class TeacherController {
         log.info("Updating teacher by id: {}", teacherDto);
         return teacherService.saveTeacher(teacherDto);
     }
+
+    @GetMapping("/teacher/{teacherId}/students")
+    public List<StudentDto> getStudentsForTeacher(@PathVariable Integer teacherId) {
+        log.info("Getting students for teacher with id: {}", teacherId);
+        return teacherService.getStudentsByTeacherId(teacherId);
+    }
+
 }
