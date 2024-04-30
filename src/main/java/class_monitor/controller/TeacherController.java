@@ -2,7 +2,6 @@ package class_monitor.controller;
 
 import class_monitor.dtos.StudentDto;
 import class_monitor.dtos.TeacherDto;
-import class_monitor.service.StudentService;
 import class_monitor.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ public class TeacherController {
 
     @Autowired
     private TeacherService teacherService;
-
-    @Autowired
-    private StudentService studentService;
 
     @PostMapping("/teacher")
     @ResponseStatus(code = HttpStatus.CREATED)

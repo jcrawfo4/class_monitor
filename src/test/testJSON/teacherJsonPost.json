@@ -1,0 +1,14 @@
+[
+    {
+        "teacherFirstName":"Jacob",
+        "teacherLastName": "Crawford",
+        "studentIds": [1,2,3],
+        "schoolId": 1
+    },
+    {
+        "teacherFirstName":"Sadaf",
+        "teacherLastName": "Ibrahimii",
+        "studentIds": [4,5,6,7],
+        "schoolId": 2
+    }
+]

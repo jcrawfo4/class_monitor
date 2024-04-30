@@ -1,0 +1,36 @@
+[
+  {
+    "studentFirstName": "Emelia",
+    "studentLastName": "Crawford",
+    "studentGrade": 0,
+    "merits": 22,
+    "demerits": 22,
+    "schoolId": 1
+  },
+  {
+    "studentFirstName": "HuggyBear",
+    "studentLastName": "Jarrel",
+    "studentGrade": 0,
+    "merits": 22,
+    "demerits": 22,
+    "schoolId": 1
+  },
+  {
+    "studentFirstName": "Ashley",
+    "studentLastName": "Urben-Jarrel",
+    "studentGrade": 12,
+    "merits": 22,
+    "demerits": 32,
+    "schoolId": 2
+  },  {
+    "studentFirstName": "Homer",
+    "studentLastName": "Simpson",
+    "studentGrade": 12,
+    "merits": 22,
+    "demerits": 32,
+    "schoolId": 2
+  }
+
+
+
+]

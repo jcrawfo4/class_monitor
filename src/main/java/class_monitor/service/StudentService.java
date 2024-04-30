@@ -1,20 +1,18 @@
 package class_monitor.service;
 
-import class_monitor.dtos.StudentDto;
 import class_monitor.dao.SchoolDao;
 import class_monitor.dao.StudentDao;
 import class_monitor.dao.TeacherDao;
+import class_monitor.dtos.StudentDto;
 import class_monitor.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -29,10 +27,12 @@ public class StudentService {
 
     @Transactional(readOnly = false)
     public StudentDto saveStudent(StudentDto studentDto){
-        Student student = studentDto.toStudent();
+        Integer studentId = studentDto.getStudentId();
+        String studentFirstName = studentDto.getStudentFirstName();
+        String studentLastName = studentDto.getStudentLastName();
+        Student student = findOrCreateStudent(studentId, studentFirstName, studentLastName);
         setFieldsInStudent(student, studentDto);
         Student databaseStudent = studentDao.save(student);
-
         return new StudentDto(databaseStudent);
     }
 
