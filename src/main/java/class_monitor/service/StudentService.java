@@ -76,12 +76,5 @@ public class StudentService {
         return Map.of("message", "Student with id = " + studentId + " deleted successfully");
     }
 
-//    public List<StudentDto> getStudentsByTeacherId(Integer teacherId) {
-//        List<Student> students = studentDao.findByTeacherId(teacherId);
-//        return students.stream()
-//                .map(StudentDto::new)
-//                .collect(Collectors.toList());
-//    }
-
 
 }
