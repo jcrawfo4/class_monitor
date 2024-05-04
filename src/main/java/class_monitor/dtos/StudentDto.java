@@ -25,7 +25,7 @@ public class StudentDto {
         this.studentLastName = student.getStudentLastName();
         this.merits = student.getMerits();
         this.demerits = student.getDemerits();
-        this.schoolId = student.getStudentId();
+        this.schoolId = student.getSchoolId();
         this.studentGrade = student.getStudentGrade();
     }
 

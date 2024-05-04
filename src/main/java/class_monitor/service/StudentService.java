@@ -51,7 +51,8 @@ public class StudentService {
             Optional<Student> studentOptional = studentDao.findByStudentFirstNameAndStudentLastName(studentFirstName, studentLastName);
             if (studentOptional.isPresent()) {
                 throw new DuplicateKeyException("Student with full name = " + studentFirstName +" "+ studentLastName + " already exists");
-            } else {
+            }
+            else {
                 student = new Student();
             }
         } else {
@@ -74,6 +75,11 @@ public class StudentService {
     public Map<String, String> deleteStudent(Integer studentId) {
         studentDao.deleteById(studentId);
         return Map.of("message", "Student with id = " + studentId + " deleted successfully");
+    }
+
+    public StudentDto updateStudent(Integer studentId, StudentDto studentDto) {
+        studentDto.setStudentId(studentId);
+        return saveStudent(studentDto);
     }
 
 

@@ -17,30 +17,29 @@ public class StudentController {
 
     @PostMapping("/student")
     @ResponseStatus(code = HttpStatus.CREATED)
-    private StudentDto createStudent(@RequestBody StudentDto studentDto){
+    private StudentDto createStudent(@RequestBody StudentDto studentDto) {
         log.info("Creating student data: {}", studentDto);
         return studentService.saveStudent(studentDto);
     }
 
     @GetMapping("student/{studentId}")
-    public StudentDto getStudentById(@PathVariable Integer studentId){
+    public StudentDto getStudentById(@PathVariable Integer studentId) {
         log.info("Getting student by id: {}", studentId);
         return studentService.getStudentById(studentId);
     }
 
-@DeleteMapping("student/{studentId}")
-    public void deleteStudent(@PathVariable Integer studentId){
+    @DeleteMapping("student/{studentId}")
+    public void deleteStudent(@PathVariable Integer studentId) {
         log.info("Deleting student by id: {}", studentId);
         studentService.deleteStudent(studentId);
     }
 
     @PutMapping("student/{studentId}")
-    public StudentDto updateStudent(@PathVariable Integer studentId, @RequestBody StudentDto studentDto){
+    public StudentDto updateStudent(@PathVariable Integer studentId, @RequestBody StudentDto studentDto) {
         studentDto.setStudentId(studentId);
         log.info("Updating student by id: {}", studentDto);
         return studentService.saveStudent(studentDto);
     }
-
 
 
 }
