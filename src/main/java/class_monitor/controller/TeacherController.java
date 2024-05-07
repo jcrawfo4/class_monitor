@@ -52,6 +52,16 @@ public class TeacherController {
         return teacherService.saveTeacher(teacherDto);
     }
 
+    @PatchMapping("/teacher/{teacherId}/student/{studentId}")
+    public TeacherDto assignStudentToTeacher(@PathVariable Integer teacherId, @PathVariable Integer studentId) {
+        TeacherDto teacherDto = teacherService.getTeacherById(teacherId);
+        teacherDto.setTeacherId(teacherId);
+        teacherDto.getStudentIds().add(studentId);
+        String teacherName = teacherDto.getTeacherFirstName() + " " + teacherDto.getTeacherLastName();
+        log.info("Assigning studentId {} to {}", studentId, teacherName);
+        return teacherService.saveTeacher(teacherDto);
+    }
+
     @GetMapping("/teacher/{teacherId}/students")
     public List<StudentDto> getStudentsForTeacher(@PathVariable Integer teacherId) {
         log.info("Getting students for teacher with id: {}", teacherId);
